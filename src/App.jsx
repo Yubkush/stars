@@ -16,7 +16,7 @@ const fixedPositions = [
   { name: "Sev", position: [-0.9 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.6 * SCALE_FACTOR, 0.2 * SCALE_FACTOR] },
   { name: "Tahun", position: [0.1 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.7 * SCALE_FACTOR, -0.1 * SCALE_FACTOR] },
   { name: "Toonyne", position: [-0.6 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.2 * SCALE_FACTOR, 0.9 * SCALE_FACTOR] },
-  { name: "Fonata", position: [0 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.2 * SCALE_FACTOR, -0.8 * SCALE_FACTOR] },
+  { name: "Kpyr", position: [0 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.2 * SCALE_FACTOR, -0.8 * SCALE_FACTOR] },
   { name: "Enti", position: [0.4 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.2 * SCALE_FACTOR, 0.5 * SCALE_FACTOR] },
   { name: "Tiwon", position: [0.7 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.2 * SCALE_FACTOR, -0.4 * SCALE_FACTOR] },
   { name: "Aytee", position: [-0.7 * SCALE_FACTOR * X_STRETCH_FACTOR, -0.1 * SCALE_FACTOR, 0.6 * SCALE_FACTOR] },
