@@ -9,10 +9,10 @@ const X_STRETCH_FACTOR = 2; // Factor to stretch x-coordinates
 
 const fixedPositions = [
   { name: "Ree", position: [-0.8 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.8 * SCALE_FACTOR, -0.5 * SCALE_FACTOR] },
-  { name: "Sev", position: [-0.5 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.9 * SCALE_FACTOR, 0.3 * SCALE_FACTOR] },
+  { name: "Sev", position: [-0.5 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.75 * SCALE_FACTOR, 0.3 * SCALE_FACTOR] },
   { name: "Enti", position: [-0.2 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.9 * SCALE_FACTOR, 0.7 * SCALE_FACTOR] },
   { name: "Tahun", position: [0.3 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.9 * SCALE_FACTOR, -0.3 * SCALE_FACTOR] },
-  { name: "Thurt", position: [0.7 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.9 * SCALE_FACTOR, 0.8 * SCALE_FACTOR] },
+  { name: "Thurt", position: [0.85 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.95 * SCALE_FACTOR, 0.8 * SCALE_FACTOR] },
   { name: "Phorr", position: [0.8 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.5 * SCALE_FACTOR, -0.6 * SCALE_FACTOR] },
   { name: "Wonn", position: [-0.9 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.6 * SCALE_FACTOR, 0.2 * SCALE_FACTOR] },
   { name: "AT-2", position: [0.1 * SCALE_FACTOR * X_STRETCH_FACTOR, 0.7 * SCALE_FACTOR, -0.1 * SCALE_FACTOR] },
@@ -83,10 +83,12 @@ function Dots() {
     if (!initialAngleSet) {
       // Set a random initial camera position
       camera.position.set(
-        Math.random() * 5,
-        Math.random() * 5,
-        Math.random() * 5
+        Math.random() * 5 + 10,
+        Math.random() * 5 + 10,
+        Math.random() * 5 + 10,
       );
+      camera.zoom = 20;
+      camera.updateProjectionMatrix();
       setInitialAngleSet(true);
     }
 
