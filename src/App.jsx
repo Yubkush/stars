@@ -60,7 +60,6 @@ function Dots() {
   const groupRef = useRef();
   const [showLabels, setShowLabels] = useState(false);
   const [initialAngleSet, setInitialAngleSet] = useState(false);
-  const [fixedZoom, setFixedZoom] = useState(false);
 
   // Parse connections and prepare lines
   const lines = useMemo(() => {
@@ -90,24 +89,24 @@ function Dots() {
       );
       setInitialAngleSet(true);
     }
-  
+
     if (groupRef.current) {
       // Calculate the vector from the group to the camera
       const groupToCamera = new THREE.Vector3().subVectors(camera.position, groupRef.current.position);
-  
+
       // Convert camera position to spherical coordinates relative to the group's position
       const spherical = new THREE.Spherical().setFromVector3(groupToCamera);
-  
+
       // Convert angles to degrees
       const azimuthalAngle = (spherical.theta * 180) / Math.PI;
       const polarAngle = (spherical.phi * 180) / Math.PI;
-  
+
       // Define target angles and tolerances
       const targetAzimuthal = 0; // degrees
       const targetPolar = 90; // degrees
-      const azimuthalTolerance = 25; // degrees
-      const polarTolerance = 25; // degrees
-  
+      const azimuthalTolerance = 15; // degrees
+      const polarTolerance = 15; // degrees
+
       // Condition to toggle labels
       if (
         azimuthalAngle > targetAzimuthal - azimuthalTolerance &&
@@ -116,34 +115,22 @@ function Dots() {
         polarAngle < targetPolar + polarTolerance
       ) {
         setShowLabels(true);
-  
-        if (!fixedZoom) {
-          camera.zoom = 1.5; // Adjust the zoom level as needed
-          camera.updateProjectionMatrix();
-          setFixedZoom(true);
-        }
-  
+
         // Calculate target rotation using quaternion
         const targetQuaternion = new THREE.Quaternion();
         targetQuaternion.setFromUnitVectors(
           new THREE.Vector3(0, 0, 1),
           groupToCamera.clone().normalize()
         );
-  
+
         // Smooth interpolation using slerp
         const delta = 0.05; // Adjust this value for smoothness
         groupRef.current.quaternion.slerp(targetQuaternion, delta);
       } else {
         setShowLabels(false);
-        if (fixedZoom) {
-          camera.zoom = 1; // Reset the zoom level
-          camera.updateProjectionMatrix();
-          setFixedZoom(false);
-        }
       }
     }
   });
-  
 
   return (
     <group ref={groupRef}>
