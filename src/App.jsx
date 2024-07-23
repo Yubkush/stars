@@ -87,7 +87,7 @@ function Dots() {
         Math.random() * 5 + 10,
         Math.random() * 5 + 10,
       );
-      camera.zoom = 20;
+      camera.zoom = 6;
       camera.updateProjectionMatrix();
       setInitialAngleSet(true);
     }
@@ -176,4 +176,3 @@ function App() {
 }
 
 export default App;
-
