@@ -61,6 +61,9 @@ function Dots() {
   const [showLabels, setShowLabels] = useState(false);
   const [initialAngleSet, setInitialAngleSet] = useState(false);
 
+  // Define white star names
+  const whiteStarNames = ["Toonyne", "Kpyr", "NT-9", "Nyne", "Xiero", "Betelgeuse", "Phorr"];
+
   // Parse connections and prepare lines
   const lines = useMemo(() => {
     const parsedLines = [];
@@ -106,8 +109,8 @@ function Dots() {
       // Define target angles and tolerances
       const targetAzimuthal = 0; // degrees
       const targetPolar = 90; // degrees
-      const azimuthalTolerance = 15; // degrees
-      const polarTolerance = 15; // degrees
+      const azimuthalTolerance = 25; // degrees
+      const polarTolerance = 25; // degrees
 
       // Condition to toggle labels
       if (
@@ -140,7 +143,7 @@ function Dots() {
         <React.Fragment key={i}>
           <mesh position={position}>
             <sphereGeometry args={[0.1, 32, 32]} />
-            <meshBasicMaterial color="#ffff6e" />
+            <meshBasicMaterial color={whiteStarNames.includes(name) ? "white" : "#ffff6e"} />
           </mesh>
           {showLabels && (
             <Text
@@ -162,6 +165,7 @@ function Dots() {
     </group>
   );
 }
+
 
 function App() {
   return (
